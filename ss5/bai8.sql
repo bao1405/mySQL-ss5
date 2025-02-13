@@ -61,39 +61,39 @@ VALUES
 ('Tech Central', 'sales@techcentral.com', 1); 
 
 
-SELECT p.product_name, w.warehouse_name, i.quantity
-FROM products p
-JOIN inventory i ON p.product_id = i.product_id
-JOIN warehouses w ON i.warehouse_id = w.warehouse_id
-WHERE p.category = 'Electronics'
-ORDER BY i.quantity DESC
-LIMIT 3 OFFSET 1;
+select p.product_name, w.warehouse_name, i.quantity
+from products p
+join inventory i on p.product_id = i.product_id
+join warehouses w on i.warehouse_id = w.warehouse_id
+where p.category = 'Electronics'
+order by i.quantity desc
+limit 3 offset 1;
 
 
-SELECT p.product_name, s.supplier_name, w.warehouse_name, i.quantity
-FROM products p
-JOIN inventory i ON p.product_id = i.product_id
-JOIN warehouses w ON i.warehouse_id = w.warehouse_id
-JOIN suppliers s ON p.product_id = s.product_id
-WHERE p.price > 5000000
-ORDER BY p.product_name ASC, s.supplier_name DESC;
+select p.product_name, s.supplier_name, w.warehouse_name, i.quantity
+from products p
+join inventory i on p.product_id = i.product_id
+join warehouses w on i.warehouse_id = w.warehouse_id
+join suppliers s on p.product_id = s.product_id
+where p.price > 5000000
+order by p.product_name asc, s.supplier_name desc;
 
 
-SELECT p.product_name, p.price, w.warehouse_name, w.location, i.quantity, s.supplier_name
-FROM products p
-JOIN inventory i ON p.product_id = i.product_id
-JOIN warehouses w ON i.warehouse_id = w.warehouse_id
-JOIN suppliers s ON p.product_id = s.product_id
-WHERE p.category IN ('Electronics', 'Fashion')
-ORDER BY i.quantity DESC
-LIMIT 5;
+select p.product_name, p.price, w.warehouse_name, w.location, i.quantity, s.supplier_name
+from products p
+join inventory i on p.product_id = i.product_id
+join warehouses w on i.warehouse_id = w.warehouse_id
+join suppliers s on p.product_id = s.product_id
+where p.category in ('Electronics', 'Fashion')
+order by i.quantity desc
+limit 5;
 
 
-SELECT p.product_name, p.price, w.warehouse_name, i.quantity, s.supplier_name, p.category
-FROM products p
-JOIN inventory i ON p.product_id = i.product_id
-JOIN warehouses w ON i.warehouse_id = w.warehouse_id
-JOIN suppliers s ON p.product_id = s.product_id
-WHERE s.supplier_name IN ('Tech Corp', 'Mobile World') AND p.price > 5000000
-ORDER BY p.price ASC
-LIMIT 4;
+select p.product_name, p.price, w.warehouse_name, i.quantity, s.supplier_name, p.category
+from products p
+join inventory i on p.product_id = i.product_id
+join warehouses w on i.warehouse_id = w.warehouse_id
+join suppliers s on p.product_id = s.product_id
+where s.supplier_name in ('Tech Corp', 'Mobile World') or p.price > 5000000
+order by p.price asc
+limit 4;
